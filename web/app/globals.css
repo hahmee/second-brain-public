@@ -1,0 +1,125 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: theme("colors.ink.950");
+  color: theme("colors.slate.200");
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: theme("fontFamily.sans");
+}
+
+.graph-spacing-range {
+  width: 100%;
+  height: 0.375rem;
+  cursor: pointer;
+  appearance: none;
+  border-radius: 999px;
+  outline: none;
+}
+
+.graph-spacing-range:focus-visible {
+  box-shadow: 0 0 0 3px rgb(160 125 42 / 0.35);
+}
+
+.graph-spacing-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid rgb(232 179 57 / 0.8);
+  border-radius: 999px;
+  background: #0a0a0b;
+  box-shadow: 0 0 0 4px rgb(232 179 57 / 0.14);
+}
+
+.graph-spacing-range::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid rgb(232 179 57 / 0.8);
+  border-radius: 999px;
+  background: #0a0a0b;
+  box-shadow: 0 0 0 4px rgb(232 179 57 / 0.14);
+}
+
+/* markdown 본문 기본 스타일 */
+.prose-thought {
+  @apply text-slate-300 leading-relaxed;
+}
+.prose-thought h1 { @apply text-2xl font-semibold text-slate-100 mt-10 mb-4; }
+.prose-thought h2 { @apply text-xl font-semibold text-slate-100 mt-8 mb-3; }
+.prose-thought h3 { @apply text-lg font-semibold text-slate-100 mt-6 mb-2; }
+.prose-thought p { @apply my-3; }
+.prose-thought ul { @apply list-disc pl-6 my-3 space-y-1; }
+.prose-thought ol { @apply list-decimal pl-6 my-3 space-y-1; }
+.prose-thought code:not(pre code) { @apply bg-ink-700 text-slate-200 px-1.5 py-0.5 rounded-md text-sm; }
+.prose-thought pre { @apply bg-ink-900 border border-ink-700 rounded-md p-4 my-4 overflow-x-auto text-sm; }
+.prose-thought pre code { @apply text-slate-300; }
+.prose-thought blockquote { @apply border-l-2 border-accent-dim pl-4 italic text-slate-400 my-4; }
+.prose-thought a { @apply text-slate-100 underline decoration-slate-600 underline-offset-2 hover:decoration-slate-400; }
+.prose-thought strong { @apply text-slate-100 font-semibold; }
+.prose-thought hr { @apply my-8 border-ink-700; }
+.prose-thought table { @apply my-4 border-collapse; }
+.prose-thought th, .prose-thought td { @apply border border-ink-700 px-3 py-2 text-left; }
+.prose-thought th { @apply bg-ink-800 text-slate-200; }
+.prose-thought img { @apply my-6 max-w-full rounded-md border border-white/[0.08] bg-ink-900; }
+
+.detail-sidebar {
+  animation: detail-sidebar-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.detail-sidebar--closing {
+  animation: detail-sidebar-out 160ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes detail-sidebar-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes detail-sidebar-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (min-width: 768px) {
+  @keyframes detail-sidebar-in {
+    from {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes detail-sidebar-out {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+  }
+}
